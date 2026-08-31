@@ -1,0 +1,7 @@
+{
+  "name": "Volume Assistant",
+  "description": "Custom accessibility-powered volume control panel and screenshot shortcut designed to replace broken physical volume buttons on Android 11 devices like OPPO A9 2020.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

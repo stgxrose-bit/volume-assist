@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Volume Assistant</string>
+    <string name="accessibility_service_name">Volume &amp; Screenshot Assistant</string>
+    <string name="accessibility_service_description">Provides an on-screen navigation bar button to launch a multi-stream volume control panel (Media, Ring, Alarm, Call) and one-tap screenshot shortcut to replace broken physical buttons.</string>
+
+    <string name="stream_media">Media</string>
+    <string name="stream_ring">Ring &amp; Notify</string>
+    <string name="stream_alarm">Alarm</string>
+    <string name="stream_call">Voice Call</string>
+    <string name="active_call_priority">Active Call Detected</string>
+    
+    <string name="action_screenshot">Screenshot</string>
+    <string name="action_close">Close</string>
+    <string name="action_mute">Mute</string>
+    <string name="action_unmute">Unmute</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_sound_mode">Sound Mode</string>
+    <string name="mode_normal">Normal</string>
+    <string name="mode_vibrate">Vibrate</string>
+    <string name="mode_silent">Silent</string>
+
+    <string name="screenshot_captured">Screenshot captured successfully!</string>
+    <string name="screenshot_failed">Screenshot capture failed (Error: %d)</string>
+
+    <string name="service_active_status">Accessibility Service is Active</string>
+    <string name="service_inactive_status">Accessibility Service is Inactive</string>
+    <string name="service_active_desc">The software volume button is active in your navigation bar or accessibility menu.</string>
+    <string name="service_inactive_desc">Enable Volume Assistant in Accessibility Settings to display the soft-button on your navigation bar.</string>
+    <string name="btn_enable_service">Open Accessibility Settings</string>
+    <string name="btn_test_panel">Test Volume Panel</string>
+    <string name="device_specs_title">Device Hardware Profile</string>
+    <string name="device_specs_desc">OPPO A9 2020 • Snapdragon 665 • Android 11 (API 30)</string>
+    <string name="setup_guide_title">How to Set Up Navigation Bar Button</string>
+    <string name="setup_step_1">1. Tap \"Open Accessibility Settings\" below.</string>
+    <string name="setup_step_2">2. Locate and tap \"Volume &amp; Screenshot Assistant\" in Downloaded Services.</string>
+    <string name="setup_step_3">3. Switch ON the service and also turn ON the \"Accessibility Shortcut / Button\".</string>
+    <string name="setup_step_4">4. Tap the person icon in your navigation bar anytime to open the volume sliders!</string>
+    <string name="floating_button_toggle">Enable Floating Bubble (Alternative to Nav Bar)</string>
+    <string name="floating_button_desc">Show a movable floating button on screen edges if navigation gestures are used instead of 3-button navigation.</string>
+</resources>
+

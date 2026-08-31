@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/panel_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_volume_panel"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:ignore="HardcodedText">
+
+    <!-- Landscape Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/iv_header_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_volume_up" />
+
+        <TextView
+            android:id="@+id/tv_panel_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/app_name"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_call_status_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="@string/active_call_priority"
+            android:textColor="#38BDF8"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Sound Mode Button in Header for Landscape -->
+        <Button
+            android:id="@+id/btn_sound_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_btn_tonal"
+            android:paddingHorizontal="8dp"
+            android:text="Mode: Normal"
+            android:textColor="#38BDF8"
+            android:textSize="11sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <!-- Quick Screenshot Button in Header -->
+        <LinearLayout
+            android:id="@+id/btn_screenshot"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_action_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="@string/action_screenshot"
+                android:src="@drawable/ic_action_screenshot" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/action_screenshot"
+                android:textColor="#E2E8F0"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Close Button -->
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_action_btn"
+            android:contentDescription="@string/action_close"
+            android:src="@drawable/ic_action_close" />
+    </LinearLayout>
+
+    <!-- 2x2 Grid Layout for Landscape -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Row 1: Call & Media -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 1. Voice Call Stream -->
+            <LinearLayout
+                android:id="@+id/card_stream_call"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stream_card"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/stream_call"
+                        android:src="@drawable/ic_stream_call" />
+
+                    <TextView
+                        android:id="@+id/tv_call_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="@string/stream_call"
+                        android:textColor="#F1F5F9"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_call_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="5/7"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btn_mute_call"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_icon_btn_ripple"
+                        android:clickable="true"
+                        android:contentDescription="@string/action_mute"
+                        android:focusable="true"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_volume_mute" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekbar_call"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:progressDrawable="@drawable/custom_seekbar_progress"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/custom_seekbar_thumb" />
+            </LinearLayout>
+
+            <!-- 2. Media Stream -->
+            <LinearLayout
+                android:id="@+id/card_stream_media"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stream_card"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/stream_media"
+                        android:src="@drawable/ic_stream_media" />
+
+                    <TextView
+                        android:id="@+id/tv_media_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="@string/stream_media"
+                        android:textColor="#F1F5F9"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_media_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="10/15"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btn_mute_media"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_icon_btn_ripple"
+                        android:clickable="true"
+                        android:contentDescription="@string/action_mute"
+                        android:focusable="true"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_volume_mute" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekbar_media"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:progressDrawable="@drawable/custom_seekbar_progress"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/custom_seekbar_thumb" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Row 2: Ring & Alarm -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 3. Ring / Notification Stream -->
+            <LinearLayout
+                android:id="@+id/card_stream_ring"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stream_card"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/stream_ring"
+                        android:src="@drawable/ic_stream_ring" />
+
+                    <TextView
+                        android:id="@+id/tv_ring_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="@string/stream_ring"
+                        android:textColor="#F1F5F9"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_ring_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="7/7"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btn_mute_ring"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_icon_btn_ripple"
+                        android:clickable="true"
+                        android:contentDescription="@string/action_mute"
+                        android:focusable="true"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_volume_mute" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekbar_ring"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:progressDrawable="@drawable/custom_seekbar_progress"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/custom_seekbar_thumb" />
+            </LinearLayout>
+
+            <!-- 4. Alarm Stream -->
+            <LinearLayout
+                android:id="@+id/card_stream_alarm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stream_card"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/stream_alarm"
+                        android:src="@drawable/ic_stream_alarm" />
+
+                    <TextView
+                        android:id="@+id/tv_alarm_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="@string/stream_alarm"
+                        android:textColor="#F1F5F9"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_alarm_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="6/7"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btn_mute_alarm"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_icon_btn_ripple"
+                        android:clickable="true"
+                        android:contentDescription="@string/action_mute"
+                        android:focusable="true"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_volume_mute" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekbar_alarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:progressDrawable="@drawable/custom_seekbar_progress"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/custom_seekbar_thumb" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_open_app"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_btn_outlined"
+        android:text="@string/action_settings"
+        android:textColor="#E2E8F0"
+        android:textSize="11sp"
+        tools:ignore="TouchTargetSizeCheck" />
+
+</LinearLayout>
