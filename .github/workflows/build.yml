@@ -3,13 +3,15 @@ name: Build Android APK
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
@@ -18,11 +20,20 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
 
     - name: Build Debug APK with Gradle
-      run: ./gradlew clean assembleDebug --info
+      run: |
+        chmod +x gradlew
+        ./gradlew assembleDebug --info || BUILD_EXIT_CODE=$?
+        if [ "${BUILD_EXIT_CODE:-0}" -ne 0 ]; then
+          echo "=========================================="
+          echo "       KT/GRADLE COMPILATION ERRORS       "
+          echo "=========================================="
+          find . -name "*.kt" # Placeholder to keep context
+          exit $BUILD_EXIT_CODE
+        fi
 
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
