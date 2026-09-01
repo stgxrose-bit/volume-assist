@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
@@ -44,6 +45,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     buildFeatures {
         compose = true
         buildConfig = true
@@ -65,10 +70,6 @@ secrets {
     propertiesFileName = "_env"
     defaultPropertiesFileName = "_env.example"
     ignoreList.add("FIREBASE_APPCHECK_DEBUG_TOKEN_FROM_CI")
-}
-
-googleServices { 
-    missingGoogleServicesStrategy = "disable" 
 }
 
 dependencies {
