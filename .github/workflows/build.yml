@@ -25,19 +25,15 @@ jobs:
 
     - name: Build Debug APK with Gradle
       run: |
+        set -o pipefail
         chmod +x gradlew
-        ./gradlew assembleDebug --no-daemon 2>&1 | tee build_log.txt || BUILD_EXIT_CODE=$?
-        if [ "${BUILD_EXIT_CODE:-0}" -ne 0 ]; then
+        ./gradlew assembleDebug --no-daemon 2>&1 | tee build_log.txt || {
           echo "=========================================="
           echo "       KOTLIN COMPILER ERROR DETAILS      "
           echo "=========================================="
-          grep -E "e: |error:|ERROR:|A failure occurred" build_log.txt || true
-          echo "=========================================="
-          echo "       LAST 40 LINES OF BUILD LOG         "
-          echo "=========================================="
-          tail -n 40 build_log.txt
-          exit $BUILD_EXIT_CODE
-        fi
+          grep -E "^e: |error:|ERROR:|A failure occurred" build_log.txt || tail -n 50 build_log.txt
+          exit 1
+        }
 
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
