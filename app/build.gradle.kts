@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.gms.google-services")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
@@ -16,7 +15,6 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -37,8 +35,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
         }
-        debug {
-        }
+        debug {}
     }
 
     compileOptions {
@@ -54,11 +51,13 @@ android {
         compose = true
         buildConfig = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
+    }
     
     testOptions { 
-        unitTests { 
-            isIncludeAndroidResources = true 
-        } 
+        unitTests { isIncludeAndroidResources = true } 
     }
     
     dependenciesInfo {
