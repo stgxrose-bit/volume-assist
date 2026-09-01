@@ -29,9 +29,9 @@ jobs:
         ./gradlew assembleDebug > build_log.txt 2>&1 || BUILD_EXIT_CODE=$?
         if [ "${BUILD_EXIT_CODE:-0}" -ne 0 ]; then
           echo "=========================================="
-          echo "       EXACT COMPILATION ERRORS           "
+          echo "       FULL COMPILATION TAIL LOG          "
           echo "=========================================="
-          grep -i -C 3 "error" build_log.txt || tail -n 80 build_log.txt
+          tail -n 150 build_log.txt
           exit $BUILD_EXIT_CODE
         fi
 
