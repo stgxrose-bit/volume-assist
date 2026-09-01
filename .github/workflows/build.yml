@@ -26,12 +26,12 @@ jobs:
     - name: Build Debug APK with Gradle
       run: |
         chmod +x gradlew
-        ./gradlew assembleDebug --info || BUILD_EXIT_CODE=$?
+        ./gradlew assembleDebug > build_log.txt 2>&1 || BUILD_EXIT_CODE=$?
         if [ "${BUILD_EXIT_CODE:-0}" -ne 0 ]; then
           echo "=========================================="
-          echo "       KT/GRADLE COMPILATION ERRORS       "
+          echo "       EXACT COMPILATION ERRORS           "
           echo "=========================================="
-          find . -name "*.kt" # Placeholder to keep context
+          grep -i -C 3 "error" build_log.txt || tail -n 80 build_log.txt
           exit $BUILD_EXIT_CODE
         fi
 
