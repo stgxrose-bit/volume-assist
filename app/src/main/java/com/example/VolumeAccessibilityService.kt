@@ -1,4 +1,5 @@
 package com.example
+import com.example.R
 
 import android.accessibilityservice.AccessibilityButtonController
 import android.accessibilityservice.AccessibilityService
