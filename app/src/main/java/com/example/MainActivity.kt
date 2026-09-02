@@ -1,4 +1,5 @@
 package com.example
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.example.R
 
 import android.accessibilityservice.AccessibilityServiceInfo
