@@ -53,8 +53,7 @@ android {
     }
 
     composeOptions {
-        suppressKotlinVersionCompatibilityCheck = "1.9.24"
-    kotlinCompilerExtensionVersion = "1.5.8"
+    kotlinCompilerExtensionVersion = "1.5.14"
     }
     
     testOptions { 
