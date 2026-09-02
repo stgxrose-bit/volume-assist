@@ -1,5 +1,5 @@
 package com.example
-import androidx.lifecycle.compose.LocalLifecycleOwner
+
 import com.example.R
 
 import android.accessibilityservice.AccessibilityServiceInfo
@@ -87,7 +87,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
+
 import com.example.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -113,7 +113,7 @@ class MainActivity : ComponentActivity() {
 fun VolumeControlDashboard() {
     val context = LocalContext.current
     val audioManager = remember { context.getSystemService(Context.AUDIO_SERVICE) as AudioManager }
-    val lifecycleOwner = LocalLifecycleOwner.current
+    val lifecycleOwner = ((androidx.activity.ComponentActivity) androidx.compose.ui.platform.LocalContext.current)
 
     var isServiceActive by remember { mutableStateOf(checkAccessibilityServiceEnabled(context)) }
 
