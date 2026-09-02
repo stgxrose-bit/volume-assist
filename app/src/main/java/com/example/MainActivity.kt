@@ -1,3 +1,4 @@
+import androidx.lifecycle.compose.LocalLifecycleOwner
 package com.example
 
 import com.example.R
@@ -113,7 +114,7 @@ class MainActivity : ComponentActivity() {
 fun VolumeControlDashboard() {
     val context = LocalContext.current
     val audioManager = remember { context.getSystemService(Context.AUDIO_SERVICE) as AudioManager }
-    val lifecycleOwner = ((androidx.activity.ComponentActivity) androidx.compose.ui.platform.LocalContext.current)
+    val lifecycleOwner = (androidx.compose.ui.platform.LocalContext.current as androidx.activity.ComponentActivity)
 
     var isServiceActive by remember { mutableStateOf(checkAccessibilityServiceEnabled(context)) }
 
