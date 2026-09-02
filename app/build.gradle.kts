@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.aistudio.volumeassist"
+    namespace = "com.example.volumeassist"
     compileSdk = 36
 
     defaultConfig {
