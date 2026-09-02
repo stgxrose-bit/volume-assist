@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.volumeassist"
+    namespace = "com.example"
     compileSdk = 36
 
     defaultConfig {

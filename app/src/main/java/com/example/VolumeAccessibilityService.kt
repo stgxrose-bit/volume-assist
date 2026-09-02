@@ -1,4 +1,4 @@
-package com.example.volumeassist
+package com.example
 import com.example.R
 
 import android.accessibilityservice.AccessibilityButtonController
